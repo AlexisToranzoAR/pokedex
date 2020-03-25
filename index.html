@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="src/main.css">
+    <title>Pokedex</title>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="index.html">Pokedex</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+      
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="https://github.com/alexis2304">GitHub</a>
+                </li>
+            </ul>
+            <form class="form-inline my-2 my-lg-0">
+                <input class="form-control mr-sm-2" type="search" placeholder="Buscar" aria-label="Search">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
+            </form>
+        </div>
+    </nav>
+    <h1 class="display-4 text-center mb-0">Pokemones</h1>
+    <div class="container d-none" id="pokemon-container">
+        <div class="sm-6">
+            <div class="row no-gutters">
+                <div class="col-sm-4" id="pokemon-images">
+                    
+                </div>
+                <div class="col-sm-6">
+                    <div class="card-body" id="pokemon-data">
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container" id="pokemons-container">
+        <div class="row">
+            <div class="col-sm-2">
+                <figure class="figure pointer" id="element-1">
+                    
+                </figure>
+            </div>
+            <div class="col-sm-2">
+                <figure class="figure pointer" id="element-2">
+                    
+                </figure>
+            </div>
+            <div class="col-sm-2">
+                <figure class="figure pointer" id="element-3">
+                    
+                </figure>
+            </div>
+            <div class="col-sm-2">
+                <figure class="figure pointer" id="element-4">
+                    
+                </figure>
+            </div>
+            <div class="col-sm-2">
+                <figure class="figure pointer" id="element-5">
+                    
+                </figure>
+            </div>
+            <div class="col-sm-2">
+                <figure class="figure pointer" id="element-6">
+                    
+                </figure>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-2">
+                <figure class="figure pointer" id="element-7">
+                    
+                </figure>
+            </div>
+            <div class="col-sm-2">
+                <figure class="figure pointer" id="element-8">
+                    
+                </figure>
+            </div>
+            <div class="col-sm-2">
+                <figure class="figure pointer" id="element-9">
+                    
+                </figure>
+            </div>
+            <div class="col-sm-2">
+                <figure class="figure pointer" id="element-10">
+                    
+                </figure>
+            </div>
+            <div class="col-sm-2">
+                <figure class="figure pointer" id="element-11">
+                    
+                </figure>
+            </div>
+            <div class="col-sm-2">
+                <figure class="figure pointer" id="element-12">
+                    
+                </figure>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-2">
+                <figure class="figure pointer" id="element-13">
+                    
+                </figure>
+            </div>
+            <div class="col-sm-2">
+                <figure class="figure pointer" id="element-14">
+                    
+                </figure>
+            </div>
+            <div class="col-sm-2">
+                <figure class="figure pointer" id="element-15">
+                    
+                </figure>
+            </div>
+            <div class="col-sm-2">
+                <figure class="figure pointer" id="element-16">
+                    
+                </figure>
+            </div>
+            <div class="col-sm-2">
+                <figure class="figure pointer" id="element-17">
+                    
+                </figure>
+            </div>
+            <div class="col-sm-2">
+                <figure class="figure pointer" id="element-18">
+                    
+                </figure>
+            </div>
+        </div>
+    </div>
+    <nav class="text-center" id="page-number-buttons">
+        <button type="submit" class="btn btn-primary default" id="previous-page" disabled>Anterior</button>
+        <button type="submit" class="btn btn-primary" id="next-page">Siguiente</button>
+    </nav>
+    <nav class="text-center d-none" id="pokemon-number-buttons">
+        <button type="submit" class="btn btn-primary" id="previous-pokemon">Anterior</button>
+        <button type="submit" class="btn btn-primary" id="next-pokemon">Siguiente</button>
+    </nav>
+    <br>
+    <script src="node_modules/jquery/dist/jquery.js"></script>
+    <script src="src/index.js"></script>
+</body>
+</html>
