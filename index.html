@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="src/main.css">
+    <link rel="stylesheet" href="src/style.css">
     <title>Pokedex</title>
 </head>
 <body>
@@ -21,7 +21,7 @@
                 </li>
             </ul>
             <form class="form-inline my-2 my-lg-0">
-                <input class="form-control mr-sm-2" type="search" placeholder="Buscar" aria-label="Search">
+                <input class="form-control mr-sm-2" type="search" placeholder="Buscar por ID o Nombre" aria-label="Search" id="search">
                 <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
             </form>
         </div>
@@ -145,6 +145,7 @@
     </nav>
     <nav class="text-center d-none" id="pokemon-number-buttons">
         <button type="submit" class="btn btn-primary" id="previous-pokemon">Anterior</button>
+        <button type="submit" class="btn btn-primary" id="home-page">Volver</button>
         <button type="submit" class="btn btn-primary" id="next-pokemon">Siguiente</button>
     </nav>
     <br>

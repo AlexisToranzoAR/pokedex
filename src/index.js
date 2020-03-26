@@ -3,42 +3,63 @@ let idPokemon = 0;
 
 loadPage(currentPage);
 
-document.querySelector('#pokemons-container').addEventListener( "click", clickPokemon)
+$('#pokemons-container')[0].addEventListener("click", clickPokemon);
+$("figure")[0].addEventListener("error", clickPokemon);
 
-document.querySelector('#previous-page').onclick = function(){
-    currentPage--;
-    loadPage(currentPage);
-    disablePreviousButton(currentPage);
-    disableNextButton(currentPage);
+$('#previous-page')[0].onclick = function(){
+    pageDown();
     return false;
 }
 
-document.querySelector('#next-page').onclick = function(){
-    currentPage++;
-    loadPage(currentPage);
-    disablePreviousButton(currentPage);
-    disableNextButton(currentPage);
+$('#next-page')[0].onclick = function(){
+    pageUp();
     return false;
 }
 
-document.querySelector('#previous-pokemon').onclick = function(){
+$('#previous-pokemon')[0].onclick = function(){
     $("#pokemon-images").empty();
     $("#pokemon-data").empty();
     idPokemon--;
     $("h1")[0].innerHTML = "";
     dataPokemon(idPokemon);
     disablePreviousPokemonButton(idPokemon);
+    changePage(idPokemon);
     return false;
 }
 
-document.querySelector('#next-pokemon').onclick = function(){
+$('#next-pokemon')[0].onclick = function(){
     $("#pokemon-images").empty();
     $("#pokemon-data").empty();
     idPokemon++;
     $("h1")[0].innerHTML = "";
     dataPokemon(idPokemon);
     disablePreviousPokemonButton(idPokemon);
+    changePage(idPokemon);
     return false;
+}
+
+$('#home-page')[0].onclick = function(){
+    $("h1")[0].innerHTML = "Pokemones";
+    $("#pokemon-images").empty();
+    $("#pokemon-data").empty();
+    $("#pokemons-container").removeClass("d-none");
+    $("#pokemon-container").addClass("d-none");
+    $("#page-number-buttons").removeClass("d-none");
+    $("#pokemon-number-buttons").addClass("d-none");
+}
+
+function pageUp(){
+    currentPage++;
+    loadPage(currentPage);
+    disablePreviousButton(currentPage);
+    disableNextButton(currentPage);
+}
+
+function pageDown(){
+    currentPage--;
+    loadPage(currentPage);
+    disablePreviousButton(currentPage);
+    disableNextButton(currentPage);
 }
 
 function clickPokemon(e){
@@ -46,9 +67,9 @@ function clickPokemon(e){
     const id = Number(element.slice(8));
     idPokemon = (currentPage-1)*18 + id;
     if(!(id === 0)){
-        $("#pokemons-container").remove();
+        $("#pokemons-container").addClass("d-none");
         $("#pokemon-container").removeClass("d-none");
-        $("#page-number-buttons").remove();
+        $("#page-number-buttons").addClass("d-none");
         $("#pokemon-number-buttons").removeClass("d-none");
         loadPokemon(idPokemon);
         disablePreviousPokemonButton(idPokemon);
@@ -56,7 +77,6 @@ function clickPokemon(e){
 }
 
 function loadPokemon(idPokemon){
-    //$("#pokemon-div")[0];
     $("h1")[0].innerHTML = "";
     dataPokemon(idPokemon);
 }
@@ -168,6 +188,13 @@ function disableNextButton(currentPage){
     }
 }
 
+function changePage(idPokemon){
+    const pageNumber = idPokemon / 18;
+    if(pageNumber>currentPage){
+        pageUp();
+    }
+}
+
 function namePokemon(idPokemon){
     const URL = `https://pokeapi.co/api/v2/pokemon/${idPokemon}`;
     return fetch(URL)
@@ -200,4 +227,10 @@ function createFigure(element,idPokemon){
 
 function firstCapitalLetter(text){
     return text.charAt(0).toUpperCase() + text.slice(1);
+}
+
+function loadAlternativeImage(element, idPokemon){
+    const imageUrl = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${idPokemon}.png`;
+    $(`#element-${element}`).append($(`<img src=${imageUrl} class="figure-img img-fluid rounded">`));
+    namePokemon(idPokemon).then(response => $(`#element-${element}`).append($(`<figcaption class="figure-caption text-center">${firstCapitalLetter(response)}</figcaption>`)));
 }
