@@ -8,35 +8,7 @@ loadPage(currentPage);
 $('#pokemons-container').click(clickPokemon);
 
 $('#search').on("click", function(){
-    const $pokemonID = Number($('#search-pokemon')[0].value);
-    const $pokemonName = $('#search-pokemon')[0].value.toLowerCase();
-    if(!($pokemonID === idPokemonGlobal) && !($pokemonName === namePokemonGlobal)){
-        if(!($pokemonID === NaN) && $pokemonID<808){
-            $("#abilities-info").empty();
-            $("#img-poke").attr("src","");
-            $("#pokemons-container").addClass("d-none");
-            $("#pokemon-container").removeClass("d-none");
-            $("#page-number-buttons").addClass("d-none");
-            $("#pokemon-number-buttons").removeClass("d-none");
-            loadPokemon($pokemonID);
-            disablePreviousPokemonButton($pokemonID);
-        }else if(/^[a-z]+$/i.test($pokemonName)){
-            loadPokemon($pokemonName)
-                .then((response) => {
-                    if(response){
-                        $("#abilities-info").empty();
-                        $("#img-poke").attr("src","");
-                        $("#pokemons-container").addClass("d-none");
-                        $("#pokemon-container").removeClass("d-none");
-                        $("#page-number-buttons").addClass("d-none");
-                        $("#pokemon-number-buttons").removeClass("d-none");
-                        disablePreviousPokemonButton(idPokemonGlobal);
-                    }else{
-                        alert("Pokemon no encontrado, asegurece de haberlo escrito correctamente")
-                    }
-                })
-        }
-    }
+    clickSearch();
     return false; 
 });
 
@@ -51,71 +23,19 @@ $('#next-page').on("click", function(){
 });
 
 $('#previous-pokemon').on("click", function(){
-    $("#abilities-info").empty();
-    $("#img-poke").attr("src","");
-    idPokemonGlobal--;
-    $("h1").html("");
-    dataPokemon(idPokemonGlobal);
-    disablePreviousPokemonButton(idPokemonGlobal);
-    changePage();
+    previousPokemon();
     return false;
 });
 
 $('#next-pokemon').on("click", function(){
-    $("#abilities-info").empty();
-    $("#img-poke").attr("src","");
-    idPokemonGlobal++;
-    $("h1").html("");
-    dataPokemon(idPokemonGlobal);
-    disablePreviousPokemonButton(idPokemonGlobal);
-    changePage();
+    nextPokemon();
     return false;
 });
 
 $('#home-page').on("click", function(){
-    idPokemonGlobal = 0;
-    namePokemonGlobal = "";
-    $("h1").html("Pokemones");
-    $("#abilities-info").empty();
-    $("#img-poke").attr("src","");
-    $("#pokemons-container").removeClass("d-none");
-    $("#pokemon-container").addClass("d-none");
-    $("#page-number-buttons").removeClass("d-none");
-    $("#pokemon-number-buttons").addClass("d-none");
+    homePage();
+    return false;
 });
-
-function changeIcon(){
-    const URL = `https://pokeres.bastionbot.org/images/pokemon/${idPokemonGlobal}.png`;
-    const altURL = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${idPokemonGlobal}.png`;
-    fetch(URL)
-        .then(response => {
-            if(response.status === 200){
-                $("#icon").attr("href",URL);
-            }else{
-                throw false;
-            }
-        })
-        .catch(() => {
-            fetch(altURL)
-                .then(response => {
-                    $("#icon").attr("href",altURL);
-                })
-        })
-}
-
-function pageUp(){
-    currentPage++;
-    loadPage(currentPage);
-    disablePreviousButton(currentPage);
-    disableNextButton(currentPage);
-}
-
-function pageDown(){
-    currentPage--;
-    loadPage(currentPage);
-    disablePreviousButton(currentPage);
-    disableNextButton(currentPage);
-}
 
 function clickPokemon(e){
     const element = e.target.parentElement.id;
@@ -127,8 +47,84 @@ function clickPokemon(e){
         $("#page-number-buttons").addClass("d-none");
         $("#pokemon-number-buttons").removeClass("d-none");
         loadPokemon(idPokemonGlobal);
-        disablePreviousPokemonButton(idPokemonGlobal);
+        disableNavPokemonButton(idPokemonGlobal);
     }
+}
+
+function clickSearch(){
+    const $pokemonID = Number($('#search-pokemon')[0].value);
+    const $pokemonName = $('#search-pokemon')[0].value.toLowerCase();
+    if(!($pokemonID === idPokemonGlobal) && !($pokemonName === namePokemonGlobal)){
+        if(!($pokemonID === NaN) && $pokemonID<808){
+            $("#abilities-info").empty();
+            $("#img-poke").attr("src","");
+            $("#pokemons-container").addClass("d-none");
+            $("#pokemon-container").removeClass("d-none");
+            $("#page-number-buttons").addClass("d-none");
+            $("#pokemon-number-buttons").removeClass("d-none");
+            loadPokemon($pokemonID);
+            disableNavPokemonButton($pokemonID);
+        }else if(/^[a-z]+$/i.test($pokemonName)){
+            loadPokemon($pokemonName)
+                .then((response) => {
+                    if(response){
+                        $("#abilities-info").empty();
+                        $("#img-poke").attr("src","");
+                        $("#pokemons-container").addClass("d-none");
+                        $("#pokemon-container").removeClass("d-none");
+                        $("#page-number-buttons").addClass("d-none");
+                        $("#pokemon-number-buttons").removeClass("d-none");
+                        disableNavPokemonButton(idPokemonGlobal);
+                    }else{
+                        alert("Pokemon no encontrado, asegurece de haberlo escrito correctamente")
+                    }
+                })
+        }
+    }
+}
+
+function pageDown(){
+    currentPage--;
+    loadPage(currentPage);
+    disableNavButton(currentPage);
+}
+
+function pageUp(){
+    currentPage++;
+    loadPage(currentPage);
+    disableNavButton(currentPage);
+}
+
+function previousPokemon(){
+    $("#abilities-info").empty();
+    $("#img-poke").attr("src","");
+    idPokemonGlobal--;
+    $("h1").html("");
+    loadPokemon(idPokemonGlobal);
+    disableNavPokemonButton(idPokemonGlobal);
+    changePage();
+}
+
+function nextPokemon(){
+    $("#abilities-info").empty();
+    $("#img-poke").attr("src","");
+    idPokemonGlobal++;
+    $("h1").html("");
+    loadPokemon(idPokemonGlobal);
+    disableNavPokemonButton(idPokemonGlobal);
+    changePage();
+}
+
+function homePage(){
+    idPokemonGlobal = 0;
+    namePokemonGlobal = "";
+    $("h1").html("Pokemones");
+    $("#abilities-info").empty();
+    $("#img-poke").attr("src","");
+    $("#pokemons-container").removeClass("d-none");
+    $("#pokemon-container").addClass("d-none");
+    $("#page-number-buttons").removeClass("d-none");
+    $("#pokemon-number-buttons").addClass("d-none");
 }
 
 function loadPokemon(idPokemon){
@@ -165,32 +161,42 @@ function loadPokemon(idPokemon){
         });
 }
 
-function dataAbilityPokemon(URL){
-    return fetch(URL)
-        .then(response => response.json())
-        .then(responseJSON => {
-            return responseJSON.flavor_text_entries[23].flavor_text;
-        })
-        .catch(() => {
-            return fetch(URL)
-                .then(response => response.json())
-                .then(responseJSON => {
-                    return responseJSON.effect_entries[0].effect;
-                })
-                .catch(error => console.error("FALLÓ MOSTRAR INFO HABILIDADES", error))
-            
-        })
+function changePage(){
+    const pageNumber = Math.ceil(idPokemonGlobal / 18);
+    if(pageNumber>currentPage){
+        while(pageNumber>currentPage){
+            currentPage++;
+        }
+        disablePreviousButton(currentPage);
+        disableNextButton(currentPage);
+        loadPage(currentPage);
+    }else if(pageNumber<currentPage){
+        while(pageNumber<currentPage){
+            currentPage--;
+        }
+        disablePreviousButton(currentPage);
+        disableNextButton(currentPage);
+        loadPage(currentPage);
+    }
 }
 
-function nameAbilityPokemon(URL){
-    return fetch(URL)
-        .then(response => response.json())
-        .then(responseJSON => {
-            return responseJSON.names[4].name;
+function changeIcon(){
+    const URL = `https://pokeres.bastionbot.org/images/pokemon/${idPokemonGlobal}.png`;
+    const altURL = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${idPokemonGlobal}.png`;
+    fetch(URL)
+        .then(response => {
+            if(response.status === 200){
+                $("#icon").attr("href",URL);
+            }else{
+                throw false;
+            }
         })
-        .catch(error => {
-            console.error("FALLÓ MOSTRAR NOMBRE HABILIDAD", error)
-        });
+        .catch(() => {
+            fetch(altURL)
+                .then(response => {
+                    $("#icon").attr("href",altURL);
+                })
+        })
 }
 
 function displayName(name){
@@ -224,15 +230,70 @@ function displayHeight(height){
     $("#height-poke").html(`Altura: ${height/10}`);    
 }
 
-function disablePreviousButton(currentPage){
+function displayWeight(weight){
+    $("#weight-poke").html(`Peso: ${weight/10}kg`);
+}
+
+function displayNumberAbilities(number){
+    $("#abilities").html("Habilidades ");
+    $("#abilities-number").html(number);
+}
+
+function displayAbilities(abilityNameUrl,abilityInfoUrl,i){
+    nameAbilityPokemon(abilityNameUrl).then(name => {
+        $("#abilities-info").append($(`<li class="list-group-item" id="ability-${i}">${firstCapitalLetter(name)}:</li>`));
+        displayAbilityInfo(abilityInfoUrl,i);
+    });
+}
+
+function nameAbilityPokemon(URL){
+    return fetch(URL)
+        .then(response => response.json())
+        .then(responseJSON => {
+            return responseJSON.names[4].name;
+        })
+        .catch(error => {
+            console.error("FALLÓ MOSTRAR NOMBRE HABILIDAD", error)
+        });
+}
+
+function displayAbilityInfo(URL,i){
+    dataAbilityPokemon(URL).then(info => {
+        $(`#ability-${i}`).append($(`<p class="mb-0">${info}</p>`));
+    });
+}
+
+function dataAbilityPokemon(URL){
+    return fetch(URL)
+        .then(response => response.json())
+        .then(responseJSON => {
+            return responseJSON.flavor_text_entries[23].flavor_text;
+        })
+        .catch(() => {
+            return fetch(URL)
+                .then(response => response.json())
+                .then(responseJSON => {
+                    return responseJSON.effect_entries[0].effect;
+                })
+                .catch(error => console.error("FALLÓ MOSTRAR INFO HABILIDADES", error))
+            
+        })
+}
+
+function disableNavButton(currentPage){
     if(currentPage === 1){
         $('#previous-page').prop('disabled', true).addClass("default");
     }else{
         $('#previous-page').prop('disabled', false).removeClass("default");
     }
+    if(currentPage === 45){
+        $('#next-page').prop('disabled', true).addClass("default");
+    }else{
+        $('#next-page').prop('disabled', false).removeClass("default");
+    }
 }
 
-function disablePreviousPokemonButton(idPokemon){
+function disableNavPokemonButton(idPokemon){
     if(idPokemon === 1){
         $('#previous-pokemon').prop('disabled', true).addClass("default");
     }else{
@@ -243,64 +304,6 @@ function disablePreviousPokemonButton(idPokemon){
     }else{
         $('#next-pokemon').prop('disabled', false).removeClass("default");
     }
-}
-
-function displayWeight(weight){
-    $("#weight-poke").html(`Peso: ${weight/10}kg`);
-}
-
-function displayAbilities(abilityNameUrl,abilityInfoUrl,i){
-    nameAbilityPokemon(abilityNameUrl).then(name => {
-        $("#abilities-info").append($(`<li class="list-group-item" id="ability-${i}">${firstCapitalLetter(name)}:</li>`));
-        displayAbilityInfo(abilityInfoUrl,i);
-    });
-}
-
-function displayAbilityInfo(URL,i){
-    dataAbilityPokemon(URL).then(info => {
-        $(`#ability-${i}`).append($(`<p class="mb-0">${info}</p>`));
-    });
-}
-
-function displayNumberAbilities(number){
-    $("#abilities").html("Habilidades ");
-    $("#abilities-number").html(number);
-}
-
-function disableNextButton(currentPage){
-    if(currentPage === 45){
-        $('#next-page').prop('disabled', true).addClass("default");
-    }else{
-        $('#next-page').prop('disabled', false).removeClass("default");
-    }
-}
-
-function changePage(){
-    const pageNumber = Math.ceil(idPokemonGlobal / 18);
-    if(pageNumber>currentPage){
-        while(pageNumber>currentPage){
-            currentPage++;
-        }
-        disablePreviousButton(currentPage);
-        disableNextButton(currentPage);
-        loadPage(currentPage);
-    }else if(pageNumber<currentPage){
-        while(pageNumber<currentPage){
-            currentPage--;
-        }
-        disablePreviousButton(currentPage);
-        disableNextButton(currentPage);
-        loadPage(currentPage);
-    }
-}
-
-function namePokemon(idPokemon){
-    const URL = `https://pokeapi.co/api/v2/pokemon/${idPokemon}`;
-    return fetch(URL)
-        .then(response => response.json())
-        .then(responseJSON => {
-            return responseJSON.name;
-        })
 }
 
 function loadPage(number){
@@ -347,6 +350,15 @@ function loadImage(element,idPokemon){
                 .then(response => {
                     $(`#element-${element} .img-poke`).attr("src",response.url);
                 })
+        })
+}
+
+function namePokemon(idPokemon){
+    const URL = `https://pokeapi.co/api/v2/pokemon/${idPokemon}`;
+    return fetch(URL)
+        .then(response => response.json())
+        .then(responseJSON => {
+            return responseJSON.name;
         })
 }
 
