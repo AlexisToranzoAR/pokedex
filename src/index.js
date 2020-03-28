@@ -5,6 +5,11 @@ let status = 0;
 
 loadPage(currentPage);
 
+window.onload = function(){
+    $('#onload').fadeOut();
+    $('body').removeClass('hidden');
+}
+
 $('#pokemons-container').click(clickPokemon);
 
 $('#search').on("click", function(){
@@ -65,6 +70,7 @@ function clickSearch(){
             loadPokemon($pokemonID);
             disableNavPokemonButton($pokemonID);
         }else if(/^[a-z]+$/i.test($pokemonName)){
+            console.log("hola")
             loadPokemon($pokemonName)
                 .then((response) => {
                     if(response){
@@ -130,33 +136,34 @@ function homePage(){
 function loadPokemon(idPokemon){
     const URL = `https://pokeapi.co/api/v2/pokemon/${idPokemon}`;
     return fetch(URL)
-        .then(response => {status = response.status;return response.json()})
-        .then(responseJSON => {
-            if(status === 200){
-                idPokemonGlobal = responseJSON.id;
-                changePage();
-                changeIcon();
-                namePokemonGlobal = responseJSON.name;
-                $("h1").html("");
-                displayName(namePokemonGlobal);
-                displayImages(idPokemonGlobal);
-                displayId(idPokemonGlobal);
-                displayHeight(responseJSON.height);
-                displayWeight(responseJSON.weight);
-                const numberAbilities = responseJSON.abilities.length;
-                displayNumberAbilities(numberAbilities);
-                responseJSON.abilities.forEach((ability,i) => {
-                    const abilityName = responseJSON.abilities[i]["ability"]["url"];
-                    const abilityInfo = responseJSON.abilities[i]["ability"]["url"];
-                    displayAbilities(abilityName,abilityInfo,i);
-                });
-                return true;
-            }else{
-                //throw false;
+        .then(response => {
+            if(!(response.status === 200)){
+                throw false;
             }
+            return response.json()
+        })
+        .then(responseJSON => {
+            idPokemonGlobal = responseJSON.id;
+            changePage();
+            changeIcon();
+            namePokemonGlobal = responseJSON.name;
+            $("h1").html("");
+            displayName(namePokemonGlobal);
+            displayImages(idPokemonGlobal);
+            displayId(idPokemonGlobal);
+            displayHeight(responseJSON.height);
+            displayWeight(responseJSON.weight);
+            const numberAbilities = responseJSON.abilities.length;
+            displayNumberAbilities(numberAbilities);
+            responseJSON.abilities.forEach((ability,i) => {
+                const abilityName = responseJSON.abilities[i]["ability"]["url"];
+                const abilityInfo = responseJSON.abilities[i]["ability"]["url"];
+                displayAbilities(abilityName,abilityInfo,i);
+            });
+            return true;
         })
         .catch(error => {
-        console.error(`FALLÓ OBTENENDO INFORMACION DEL POKEMON "${idPokemon}"`, error);
+        console.error(`FALLÓ OBTENIENDO INFORMACION DEL POKEMON "${idPokemon}"`, error);
         return false;
         });
 }
@@ -167,8 +174,7 @@ function changePage(){
         while(pageNumber>currentPage){
             currentPage++;
         }
-        disablePreviousButton(currentPage);
-        disableNextButton(currentPage);
+        disableNavButton(currentPage);
         loadPage(currentPage);
     }else if(pageNumber<currentPage){
         while(pageNumber<currentPage){
@@ -193,7 +199,7 @@ function changeIcon(){
         })
         .catch(() => {
             fetch(altURL)
-                .then(response => {
+                .then(() => {
                     $("#icon").attr("href",altURL);
                 })
         })
@@ -204,21 +210,27 @@ function displayName(name){
 }
 
 function displayImages(idPokemon){
-    const URL = `https://pokeres.bastionbot.org/images/pokemon/${idPokemon}.png`;
+    const firstURL = `https://pokeres.bastionbot.org/images/pokemon/${idPokemon}.png`;
     const altURL = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${idPokemon}.png`
-    fetch(URL)
+    fetch(firstURL)
         .then(response => {
-            if(response.status === 200){
-                $(`#img-poke`).attr("src",response.url);
-            }else{
+            if(!(response.status === 200)){
                 throw false;
             }
+            return response.blob()
+        })
+        .then(blob => {
+            const img = URL.createObjectURL(blob);
+            $(`#img-poke`).attr("src",img);
         })
         .catch(() => {
             fetch(altURL)
-                .then(response => {
-                    $(`#img-poke`).attr("src",response.url);
+                .then(response => response.blob())
+                .then(blob => {
+                    const img = URL.createObjectURL(blob);
+                    $(`#img-poke`).attr("src",img);
                 })
+                .catch((error) => console.error(`FALLO CARGAR IMAGEN POKEMON "${idPokemon}"`,error))
         })
 }
 
@@ -335,21 +347,28 @@ function createFigure(element,idPokemon){
 }
 
 function loadImage(element,idPokemon){
-    const URL = `https://pokeres.bastionbot.org/images/pokemon/${idPokemon}.png`;
+    const firstURL = `https://pokeres.bastionbot.org/images/pokemon/${idPokemon}.png`;
     const altURL = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${idPokemon}.png`
-    fetch(URL)
+    fetch(firstURL)
         .then(response => {
-            if(response.status === 200){
-                $(`#element-${element} .img-poke`).attr("src",response.url);
-            }else{
+            if(!(response.status === 200)){
                 throw false;
             }
+            return response.blob()
+        })
+        .then(blob => {
+            const img = URL.createObjectURL(blob);
+            $(`#element-${element} .img-poke`).attr("src",img);
+            
         })
         .catch(() => {
             fetch(altURL)
-                .then(response => {
-                    $(`#element-${element} .img-poke`).attr("src",response.url);
+                .then(response => response.blob())
+                .then(blob => {
+                    const img = URL.createObjectURL(blob);
+                    $(`#element-${element} .img-poke`).attr("src",img);
                 })
+                .catch((error) => console.error(`FALLO CARGAR IMAGEN POKEMON "${idPokemon}" EN MAIN`,error))
         })
 }
 
@@ -360,6 +379,7 @@ function namePokemon(idPokemon){
         .then(responseJSON => {
             return responseJSON.name;
         })
+        .catch((error) => console.error(`FALLO AL OBTENER NOMBRE DEL POKEMON "${idPokemon}"`, error))
 }
 
 function firstCapitalLetter(text){
