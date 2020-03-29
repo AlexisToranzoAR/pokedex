@@ -9,179 +9,186 @@
     <title>Pokedex</title>
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="index.html">Pokedex</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-      
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
-                    <a class="nav-link" href="https://github.com/alexis2304/pokedex " target="_blank">GitHub</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="https://pokeapi.co/" target="_blank">PokeAPI</a>
-                </li>
-            </ul>
-            <form class="form-inline my-2 my-lg-0">
-                <input class="form-control mr-sm-2" type="search" placeholder="Buscar por ID o Nombre" aria-label="Search" id="search-pokemon">
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit" id="search">Buscar</button>
-            </form>
-        </div>
-    </nav>
-    <h1 class="display-4 text-center mb-0">Pokemones</h1>
-    <div class="container d-none" id="pokemon-container">
-        <div class="sm-6">
-            <div class="row no-gutters">
-                <div class="col-sm-4">
-                    <img class="figure-img img-fluid rounded" id="img-poke">
-                </div>
-                <div class="col-sm-6">
-                    <div class="card-body">
-                        <p class="card-text" id="id-poke"></p>
-                        <p class="card-text" id="height-poke"></p>
-                        <p class="card-text" id="weight-poke"></p>
-                        <p class="mb-0" id="abilities">
-                            <span class="badge badge-primary badge-pill" id="abilities-number"></span>
-                        </p>
-                        <ul class="list-group list-group-flush" id="abilities-info">
-                           
-                        </ul>
+    <div id="page">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" href="index.html">Pokedex</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+          
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="https://github.com/alexis2304/pokedex " target="_blank">GitHub</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="https://pokeapi.co/" target="_blank">PokeAPI</a>
+                    </li>
+                </ul>
+                <form class="form-inline my-2 my-lg-0">
+                    <input class="form-control mr-sm-2" type="search" placeholder="Buscar por ID o Nombre" aria-label="Search" id="search-pokemon">
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit" id="search">Buscar</button>
+                </form>
+            </div>
+        </nav>
+        <h1 class="display-4 text-center mb-0">Pokemones</h1>
+        <div class="container d-none" id="pokemon-container">
+            <div class="sm-6">
+                <div class="row no-gutters">
+                    <div class="col-sm-4">
+                        <img class="figure-img img-fluid rounded" id="img-poke">
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="card-body">
+                            <p class="card-text" id="id-poke"></p>
+                            <p class="card-text" id="height-poke"></p>
+                            <p class="card-text" id="weight-poke"></p>
+                            <p class="mb-0" id="abilities">
+                                <span class="badge badge-primary badge-pill" id="abilities-number"></span>
+                            </p>
+                            <ul class="list-group list-group-flush" id="abilities-info">
+                               
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
+        <div class="container" id="pokemons-container">
+            <div class="row">
+                <div class="col-sm-2">
+                    <figure class="figure pointer" id="element-1">
+                        <img class="figure-img img-fluid rounded img-poke" id="img-1">
+                        <figcaption class="figure-caption text-center name-poke"></figcaption>
+                    </figure>
+                </div>
+                <div class="col-sm-2">
+                    <figure class="figure pointer" id="element-2">
+                        <img class="figure-img img-fluid rounded img-poke" id="img-2">
+                        <figcaption class="figure-caption text-center name-poke"></figcaption>
+                    </figure>
+                </div>
+                <div class="col-sm-2">
+                    <figure class="figure pointer" id="element-3">
+                        <img class="figure-img img-fluid rounded img-poke">
+                        <figcaption class="figure-caption text-center name-poke"></figcaption>
+                    </figure>
+                </div>
+                <div class="col-sm-2">
+                    <figure class="figure pointer" id="element-4">
+                        <img class="figure-img img-fluid rounded img-poke">
+                        <figcaption class="figure-caption text-center name-poke"></figcaption>
+                    </figure>
+                </div>
+                <div class="col-sm-2">
+                    <figure class="figure pointer" id="element-5">
+                        <img class="figure-img img-fluid rounded img-poke">
+                        <figcaption class="figure-caption text-center name-poke"></figcaption>
+                    </figure>
+                </div>
+                <div class="col-sm-2">
+                    <figure class="figure pointer" id="element-6">
+                        <img class="figure-img img-fluid rounded img-poke">
+                        <figcaption class="figure-caption text-center name-poke"></figcaption>
+                    </figure>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-2">
+                    <figure class="figure pointer" id="element-7">
+                        <img class="figure-img img-fluid rounded img-poke">
+                        <figcaption class="figure-caption text-center name-poke"></figcaption>
+                    </figure>
+                </div>
+                <div class="col-sm-2">
+                    <figure class="figure pointer" id="element-8">
+                        <img class="figure-img img-fluid rounded img-poke">
+                        <figcaption class="figure-caption text-center name-poke"></figcaption>
+                    </figure>
+                </div>
+                <div class="col-sm-2">
+                    <figure class="figure pointer" id="element-9">
+                        <img class="figure-img img-fluid rounded img-poke">
+                        <figcaption class="figure-caption text-center name-poke"></figcaption>
+                    </figure>
+                </div>
+                <div class="col-sm-2">
+                    <figure class="figure pointer" id="element-10">
+                        <img class="figure-img img-fluid rounded img-poke">
+                        <figcaption class="figure-caption text-center name-poke"></figcaption>
+                    </figure>
+                </div>
+                <div class="col-sm-2">
+                    <figure class="figure pointer" id="element-11">
+                        <img class="figure-img img-fluid rounded img-poke">
+                        <figcaption class="figure-caption text-center name-poke"></figcaption>
+                    </figure>
+                </div>
+                <div class="col-sm-2">
+                    <figure class="figure pointer" id="element-12">
+                        <img class="figure-img img-fluid rounded img-poke">
+                        <figcaption class="figure-caption text-center name-poke"></figcaption>
+                    </figure>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-2">
+                    <figure class="figure pointer" id="element-13">
+                        <img class="figure-img img-fluid rounded img-poke">
+                        <figcaption class="figure-caption text-center name-poke"></figcaption>
+                    </figure>
+                </div>
+                <div class="col-sm-2">
+                    <figure class="figure pointer" id="element-14">
+                        <img class="figure-img img-fluid rounded img-poke">
+                        <figcaption class="figure-caption text-center name-poke"></figcaption>
+                    </figure>
+                </div>
+                <div class="col-sm-2">
+                    <figure class="figure pointer" id="element-15">
+                        <img class="figure-img img-fluid rounded img-poke">
+                        <figcaption class="figure-caption text-center name-poke"></figcaption>
+                    </figure>
+                </div>
+                <div class="col-sm-2">
+                    <figure class="figure pointer" id="element-16">
+                        <img class="figure-img img-fluid rounded img-poke">
+                        <figcaption class="figure-caption text-center name-poke"></figcaption>
+                    </figure>
+                </div>
+                <div class="col-sm-2">
+                    <figure class="figure pointer" id="element-17">
+                        <img class="figure-img img-fluid rounded img-poke">
+                        <figcaption class="figure-caption text-center name-poke"></figcaption>
+                    </figure>
+                </div>
+                <div class="col-sm-2">
+                    <figure class="figure pointer" id="element-18">
+                        <img class="figure-img img-fluid rounded img-poke" id="img-18">
+                        <figcaption class="figure-caption text-center name-poke"></figcaption>
+                    </figure>
+                </div>
+            </div>
+        </div>
+        <nav class="text-center" id="page-number-buttons">
+            <button type="submit" class="btn btn-primary default" id="previous-page" disabled>Anterior</button>
+            <button type="submit" class="btn btn-primary" id="next-page">Siguiente</button>
+        </nav>
+        <nav class="text-center d-none" id="pokemon-number-buttons">
+            <button type="submit" class="btn btn-primary" id="previous-pokemon">Anterior</button>
+            <button type="submit" class="btn btn-primary" id="home-page">Volver</button>
+            <button type="submit" class="btn btn-primary" id="next-pokemon">Siguiente</button>
+        </nav>
+        <br>
     </div>
-    <div class="container" id="pokemons-container">
-        <div class="row">
-            <div class="col-sm-2">
-                <figure class="figure pointer" id="element-1">
-                    <img class="figure-img img-fluid rounded img-poke">
-                    <figcaption class="figure-caption text-center name-poke"></figcaption>
-                </figure>
-            </div>
-            <div class="col-sm-2">
-                <figure class="figure pointer" id="element-2">
-                    <img class="figure-img img-fluid rounded img-poke">
-                    <figcaption class="figure-caption text-center name-poke"></figcaption>
-                </figure>
-            </div>
-            <div class="col-sm-2">
-                <figure class="figure pointer" id="element-3">
-                    <img class="figure-img img-fluid rounded img-poke">
-                    <figcaption class="figure-caption text-center name-poke"></figcaption>
-                </figure>
-            </div>
-            <div class="col-sm-2">
-                <figure class="figure pointer" id="element-4">
-                    <img class="figure-img img-fluid rounded img-poke">
-                    <figcaption class="figure-caption text-center name-poke"></figcaption>
-                </figure>
-            </div>
-            <div class="col-sm-2">
-                <figure class="figure pointer" id="element-5">
-                    <img class="figure-img img-fluid rounded img-poke">
-                    <figcaption class="figure-caption text-center name-poke"></figcaption>
-                </figure>
-            </div>
-            <div class="col-sm-2">
-                <figure class="figure pointer" id="element-6">
-                    <img class="figure-img img-fluid rounded img-poke">
-                    <figcaption class="figure-caption text-center name-poke"></figcaption>
-                </figure>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-sm-2">
-                <figure class="figure pointer" id="element-7">
-                    <img class="figure-img img-fluid rounded img-poke">
-                    <figcaption class="figure-caption text-center name-poke"></figcaption>
-                </figure>
-            </div>
-            <div class="col-sm-2">
-                <figure class="figure pointer" id="element-8">
-                    <img class="figure-img img-fluid rounded img-poke">
-                    <figcaption class="figure-caption text-center name-poke"></figcaption>
-                </figure>
-            </div>
-            <div class="col-sm-2">
-                <figure class="figure pointer" id="element-9">
-                    <img class="figure-img img-fluid rounded img-poke">
-                    <figcaption class="figure-caption text-center name-poke"></figcaption>
-                </figure>
-            </div>
-            <div class="col-sm-2">
-                <figure class="figure pointer" id="element-10">
-                    <img class="figure-img img-fluid rounded img-poke">
-                    <figcaption class="figure-caption text-center name-poke"></figcaption>
-                </figure>
-            </div>
-            <div class="col-sm-2">
-                <figure class="figure pointer" id="element-11">
-                    <img class="figure-img img-fluid rounded img-poke">
-                    <figcaption class="figure-caption text-center name-poke"></figcaption>
-                </figure>
-            </div>
-            <div class="col-sm-2">
-                <figure class="figure pointer" id="element-12">
-                    <img class="figure-img img-fluid rounded img-poke">
-                    <figcaption class="figure-caption text-center name-poke"></figcaption>
-                </figure>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-sm-2">
-                <figure class="figure pointer" id="element-13">
-                    <img class="figure-img img-fluid rounded img-poke">
-                    <figcaption class="figure-caption text-center name-poke"></figcaption>
-                </figure>
-            </div>
-            <div class="col-sm-2">
-                <figure class="figure pointer" id="element-14">
-                    <img class="figure-img img-fluid rounded img-poke">
-                    <figcaption class="figure-caption text-center name-poke"></figcaption>
-                </figure>
-            </div>
-            <div class="col-sm-2">
-                <figure class="figure pointer" id="element-15">
-                    <img class="figure-img img-fluid rounded img-poke">
-                    <figcaption class="figure-caption text-center name-poke"></figcaption>
-                </figure>
-            </div>
-            <div class="col-sm-2">
-                <figure class="figure pointer" id="element-16">
-                    <img class="figure-img img-fluid rounded img-poke">
-                    <figcaption class="figure-caption text-center name-poke"></figcaption>
-                </figure>
-            </div>
-            <div class="col-sm-2">
-                <figure class="figure pointer" id="element-17">
-                    <img class="figure-img img-fluid rounded img-poke">
-                    <figcaption class="figure-caption text-center name-poke"></figcaption>
-                </figure>
-            </div>
-            <div class="col-sm-2">
-                <figure class="figure pointer" id="element-18">
-                    <img class="figure-img img-fluid rounded img-poke">
-                    <figcaption class="figure-caption text-center name-poke"></figcaption>
-                </figure>
-            </div>
+    <div class="preloader-container preloader-body" id="preloader">
+        <div class="pokeball">
+
         </div>
     </div>
-    <nav class="text-center" id="page-number-buttons">
-        <button type="submit" class="btn btn-primary default" id="previous-page" disabled>Anterior</button>
-        <button type="submit" class="btn btn-primary" id="next-page">Siguiente</button>
-    </nav>
-    <nav class="text-center d-none" id="pokemon-number-buttons">
-        <button type="submit" class="btn btn-primary" id="previous-pokemon">Anterior</button>
-        <button type="submit" class="btn btn-primary" id="home-page">Volver</button>
-        <button type="submit" class="btn btn-primary" id="next-pokemon">Siguiente</button>
-    </nav>
-    <br>
     <script src="node_modules/jquery/dist/jquery.js"></script>
     <script src="node_modules/popper.js/dist/umd/popper.min.js"></script>
     <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
-    <script src="src/index.js"></script>
+    <script src="src/main.js"></script>
 </body>
 </html>

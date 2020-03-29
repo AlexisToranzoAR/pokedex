@@ -5,9 +5,14 @@ let status = 0;
 
 loadPage(currentPage);
 
-window.onload = function(){
-    $('#onload').fadeOut();
-    $('body').removeClass('hidden');
+document.querySelector("#img-18").onload = function(){
+    $('#preloader').animate({
+        opacity: 0.5 // 50%
+    }, 1000);
+    $('#preloader').fadeOut();
+    $('#preloader').animate({
+        opacity: 1
+    }, 1);
 }
 
 $('#pokemons-container').click(clickPokemon);
@@ -90,12 +95,14 @@ function clickSearch(){
 }
 
 function pageDown(){
+    $('#preloader').fadeIn();
     currentPage--;
     loadPage(currentPage);
     disableNavButton(currentPage);
 }
 
 function pageUp(){
+    $('#preloader').fadeIn();
     currentPage++;
     loadPage(currentPage);
     disableNavButton(currentPage);
