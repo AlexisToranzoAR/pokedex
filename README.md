@@ -4,14 +4,11 @@ _Una pokedex basada en utlizar PokeAPI para la recoleccion de datos y ser mostra
 
 ## Comenzando 🚀
 
-_Estas instrucciones te permitirán obtener una copia del proyecto en funcionamiento en tu máquina local para propósitos de desarrollo y pruebas._
-
-Mira **Deployment** para conocer como desplegar el proyecto.
-
+[GitHub Pages](https://alexis2304.github.io/pokedex/)
 
 ### Pre-requisitos 📋
 _El unico prerequisito es tener instalado npm._
-_Opcionalmente http-server para ejecutar la pagina en un servidor local._
+_Opcionalmente http-server para ejecutar las pruebas con cypress._
 
 ### Instalación 🔧
 
@@ -23,33 +20,26 @@ _Luego en la carpeta del proyecto ejecutar el siguiente comando para instalar lo
 npm install
 ```
 
-_Ya se puede abrir en el navegador "index.html" o ejecutar http-server o otra herramienta para ejecutar la pagina en un servidor local._
-
-_Ahora se puede utilizar la busqueda de pokemones desplazarse por las paginas etc._
-
 ## Ejecutando las pruebas ⚙️
 
-_Explica como ejecutar las pruebas automatizadas para este sistema_
-
-### Analice las pruebas end-to-end 🔩
-
-_Explica que verifican estas pruebas y por qué_
-
+_Para ejecutar las pruebas inicie http-server con el siguiente comando:_
 ```
-Da un ejemplo
+http-server -c -1
 ```
 
-### Y las pruebas de estilo de codificación ⌨️
-
-_Explica que verifican estas pruebas y por qué_
-
+_Luego para una prueba visual ejecute:_
 ```
-Da un ejemplo
+npm run cypress-dev
 ```
 
-## Despliegue 📦
+_Para una prueba rapida en la consola ejecutar:_
+```
+npm run cypress-run
+```
 
-_Agrega notas adicionales sobre como hacer deploy_
+### Analisis de las pruebas end-to-end 🔩
+
+_Estas pruebas analisan el correcto funcionamiento de toda la pagina, desde que cargue los datos correctos de los pokemones, el funcionamiento de cada boton y el perfecto funcionamiento de la herramienta de busqueda_
 
 ## Construido con 🛠️
 
@@ -59,4 +49,4 @@ _Agrega notas adicionales sobre como hacer deploy_
 
 ## Licencia 📄
 
-Este proyecto está bajo la Licencia (Tu Licencia) - mira el archivo [LICENSE.md](LICENSE.md) para detalles
+Este proyecto está bajo la Licencia GNU General Public License v3.0 - mira el archivo [LICENSE.md](LICENSE.md) para detalles.
