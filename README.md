@@ -3,7 +3,7 @@
 _Una pokedex basada en utlizar PokeAPI para la recoleccion de datos y ser mostrados al usuario en una interfaz agradable._
 
 ## Comenzando 🚀
-
+_Se puede ver el funcionamiento de la pagina desde el siguiente link:_
 [GitHub Pages](https://alexis2304.github.io/pokedex/)
 
 ### Pre-requisitos 📋
@@ -39,7 +39,7 @@ npm run cypress-run
 
 ### Analisis de las pruebas end-to-end 🔩
 
-_Estas pruebas analisan el correcto funcionamiento de toda la pagina, desde que cargue los datos correctos de los pokemones, el funcionamiento de cada boton y el perfecto funcionamiento de la herramienta de busqueda_
+_Estas pruebas analisan el correcto funcionamiento de toda la pagina, desde que cargue los datos correctos de los pokemones, el funcionamiento de cada boton y el perfecto funcionamiento de la herramienta de busqueda._
 
 ## Construido con 🛠️
 
