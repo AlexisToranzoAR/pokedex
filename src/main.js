@@ -187,8 +187,7 @@ function changePage(){
         while(pageNumber<currentPage){
             currentPage--;
         }
-        disablePreviousButton(currentPage);
-        disableNextButton(currentPage);
+        disableNavButton(currentPage);
         loadPage(currentPage);
     }
 }
