@@ -5,16 +5,6 @@ let status = 0;
 
 loadPage(currentPage);
 
-document.querySelector("#img-18").onload = function(){
-    $('#preloader').animate({
-        opacity: 0.5 // 50%
-    }, 1000);
-    $('#preloader').fadeOut();
-    $('#preloader').animate({
-        opacity: 1
-    }, 1);
-}
-
 $('#pokemons-container').click(clickPokemon);
 
 $('#search').on("click", function(){

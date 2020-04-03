@@ -8,16 +8,17 @@ context('pokedex', () => {
     })
 
     it('se asegura que se pueda hacer click a un pokemon', () => {
-        cy.wait(3000)
+        cy.wait(3000);
         cy.get('#element-4').click();
     })
     
     it('se asegura que se muestre el pokemon seleccionado', () => {
         cy.get('#img-poke').should('exist');
-        cy.get('#id-poke').should('exist');
-        cy.get('#height-poke').should('exist');
-        cy.get('#weight-poke').should('exist');
-        cy.get('#ability-1').should('exist');
+        cy.get('#id-poke').should('have.text', "ID: 4");
+        cy.get('#height-poke').should('have.text', "Altura: 0.6");
+        cy.get('#weight-poke').should('have.text', "Peso: 8.5kg");
+        cy.get('#ability-0').should('have.text', "Poder Solar:Si hace sol, baja los PS, pero\npotencia el At. Esp.");
+        cy.get('#ability-1').should('have.text', "Mar Llamas:Potencia los ataques de tipo\nFuego en un apuro.");
     })
 
     it('se asegura que se pueda hacer click en siguiente pokemon', () => {
@@ -43,7 +44,6 @@ context('pokedex', () => {
     })
 
     it('se asegura que se pueda buscar por id existente', () => {
-        cy.wait(3000)
         cy.get('#search-pokemon').type(150);
         cy.get('#search').click();
         cy.get('#img-poke').should('exist');
