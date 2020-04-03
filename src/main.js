@@ -235,7 +235,7 @@ function displayId(idPokemon){
 }
 
 function displayHeight(height){
-    $("#height-poke").html(`Altura: ${height/10}`);    
+    $("#height-poke").html(`Altura: ${height/10}m`);    
 }
 
 function displayWeight(weight){
@@ -244,7 +244,7 @@ function displayWeight(weight){
 
 function displayNumberAbilities(number){
     $("#abilities").html("Habilidades ");
-    $("#abilities-number").html(number);
+    $("#abilities").append($(`<span class="badge badge-primary badge-pill">${number}</span>`))
 }
 
 function displayAbilities(abilityNameUrl,abilityInfoUrl,i){
