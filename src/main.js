@@ -80,6 +80,8 @@ function clickSearch(){
                         alert("Pokemon no encontrado, asegurece de haberlo escrito correctamente")
                     }
                 })
+        }else{
+            alert("Pokemon no encontrado, aegurece de haber escrito la id correctamente")
         }
     }
 }
@@ -206,28 +208,34 @@ function displayName(name){
 }
 
 function displayImages(idPokemon){
-    const firstURL = `https://pokeres.bastionbot.org/images/pokemon/${idPokemon}.png`;
-    const altURL = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${idPokemon}.png`
-    fetch(firstURL)
-        .then(response => {
-            if(!(response.status === 200)){
-                throw false;
-            }
-            return response.blob()
-        })
-        .then(blob => {
-            const img = URL.createObjectURL(blob);
-            $(`#img-poke`).attr("src",img);
-        })
-        .catch(() => {
-            fetch(altURL)
-                .then(response => response.blob())
-                .then(blob => {
-                    const img = URL.createObjectURL(blob);
-                    $(`#img-poke`).attr("src",img);
-                })
-                .catch((error) => console.error(`FALLO CARGAR IMAGEN POKEMON "${idPokemon}"`,error))
-        })
+    const elementNumber = idPokemon-18*(currentPage-1);
+    const imgSrc = $(`#element-${elementNumber} img`).attr("src");
+    if(imgSrc === ""){
+        const firstURL = `https://pokeres.bastionbot.org/images/pokemon/${idPokemon}.png`;
+        const altURL = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${idPokemon}.png`
+        fetch(firstURL)
+            .then(response => {
+                if(!(response.status === 200)){
+                    throw false;
+                }
+                return response.blob()
+            })
+            .then(blob => {
+                const img = URL.createObjectURL(blob);
+                $(`#img-poke`).attr("src",img);
+            })
+            .catch(() => {
+                fetch(altURL)
+                    .then(response => response.blob())
+                    .then(blob => {
+                        const img = URL.createObjectURL(blob);
+                        $(`#img-poke`).attr("src",img);
+                    })
+                    .catch((error) => console.error(`FALLO CARGAR IMAGEN POKEMON "${idPokemon}"`,error))
+            })
+    }else{
+        $(`#img-poke`).attr("src",imgSrc);
+    }
 }
 
 function displayId(idPokemon){
