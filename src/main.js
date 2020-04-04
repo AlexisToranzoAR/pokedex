@@ -77,11 +77,11 @@ function clickSearch(){
                         $("#pokemon-number-buttons").removeClass("d-none");
                         disableNavPokemonButton(idPokemonGlobal);
                     }else{
-                        alert("Pokemon no encontrado, asegurece de haberlo escrito correctamente")
+                        alert("Pokemon no encontrado, asegurece de haber escrito el nombre correctamente")
                     }
                 })
         }else{
-            alert("Pokemon no encontrado, aegurece de haber escrito la id correctamente")
+            alert("Pokemon no encontrado, asegurece de haber escrito la id correctamente")
         }
     }
 }
