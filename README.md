@@ -4,7 +4,7 @@ _Una pokedex basada en utlizar PokeAPI para la recoleccion de datos y ser mostra
 
 ## Comenzando 🚀
 _Se puede ver el funcionamiento de la pagina desde el siguiente link:_
-[GitHub Pages](https://alexis2304.github.io/pokedex/)
+[GitHub Pages](https://AlexisToranzoAR.github.io/pokedex/)
 
 ### Pre-requisitos 📋
 _El unico prerequisito es tener instalado npm._
