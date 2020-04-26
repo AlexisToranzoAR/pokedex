@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "serve": "http-server -c-1",
     "cypress-dev": "cypress open",
     "cypress-run": "cypress run"
   },
@@ -20,8 +21,14 @@
   "homepage": "https://github.com/alexis2304/pokedex#readme",
   "dependencies": {
     "bootstrap": "^4.4.1",
-    "cypress": "^4.1.0",
     "jquery": "^3.4.1",
     "popper.js": "^1.16.1"
+  },
+  "devDependencies": {
+    "@types/jquery": "^3.3.33",
+    "cypress": "^4.1.0",
+    "eslint": "^6.8.0",
+    "eslint-config-airbnb-base": "^14.1.0",
+    "eslint-plugin-import": "^2.20.2"
   }
 }
