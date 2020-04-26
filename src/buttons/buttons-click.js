@@ -1,38 +1,38 @@
-import{
-    pageDown,
-    pageUp,
-    previousPokemon,
-    nextPokemon,
-    homePage
-} from '../iu/buttons.js'
-import{ clickSearch } from '../search-pokemon/search.js'
+import {
+  pageDown,
+  pageUp,
+  previousPokemon,
+  nextPokemon,
+  homePage,
+} from '../iu/buttons.js';
+import { clickSearch } from '../search-pokemon/search.js';
 
-$('#search').on("click", function(){
-    clickSearch();
-    return false; 
+$('#search').on('click', () => {
+  clickSearch();
+  return false;
 });
 
-$('#previous-page').on("click", function(){
-    pageDown();
-    return false;
+$('#previous-page').on('click', () => {
+  pageDown();
+  return false;
 });
 
-$('#next-page').on("click", function(){
-    pageUp();
-    return false;
+$('#next-page').on('click', () => {
+  pageUp();
+  return false;
 });
 
-$('#previous-pokemon').on("click", function(){
-    previousPokemon();
-    return false;
+$('#previous-pokemon').on('click', () => {
+  previousPokemon();
+  return false;
 });
 
-$('#next-pokemon').on("click", function(){
-    nextPokemon();
-    return false;
+$('#next-pokemon').on('click', () => {
+  nextPokemon();
+  return false;
 });
 
-$('#home-page').on("click", function(){
-    homePage();
-    return false;
+$('#home-page').on('click', () => {
+  homePage();
+  return false;
 });
