@@ -5,7 +5,7 @@ export function loadImgBastionAPI(idPokemon) {
       if (response.status === 200) {
         return response.blob();
       }
-      throw false;
+      throw new Error();
     })
     .then((blob) => URL.createObjectURL(blob));
 }

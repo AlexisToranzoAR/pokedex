@@ -3,7 +3,7 @@ export function loadPokemonDataAPI(idPokemon) {
   return fetch(pokeURL)
     .then((response) => {
       if (!(response.status === 200)) {
-        throw false;
+        throw new Error();
       }
       return response.json();
     });
@@ -16,7 +16,7 @@ export function loadImgPokeAPI(idPokemon) {
       if (response.status === 200) {
         return response.blob();
       }
-      throw false;
+      throw new Error();
     })
     .then((blob) => URL.createObjectURL(blob));
 }
