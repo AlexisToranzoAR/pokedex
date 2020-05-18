@@ -5,30 +5,40 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "serve": "http-server -c-1",
+    "test:dev": "jest --watch",
+    "test:iu": "run-p serve cypress-run",
+    "test:iu:dev": "run-p serve cypress-dev",
     "cypress-dev": "cypress open",
-    "cypress-run": "cypress run"
+    "cypress-run": "cypress run",
+    "serve": "http-server -c-1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/alexis2304/pokedex.git"
+    "url": "git+https://github.com/alexistoranzoar/pokedex.git"
   },
   "author": "alexis toranzo",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/alexis2304/pokedex/issues"
+    "url": "https://github.com/alexistoranzoar/pokedex/issues"
   },
-  "homepage": "https://github.com/alexis2304/pokedex#readme",
+  "homepage": "https://github.com/alexistoranzoar/pokedex#readme",
   "dependencies": {
     "bootstrap": "^4.4.1",
-    "jquery": "^3.4.1",
-    "popper.js": "^1.16.1"
+    "jquery": "^3.5.1",
+    "popper.js": "^1.16.1",
+    "request": "^2.88.2"
   },
   "devDependencies": {
+    "@babel/core": "^7.9.6",
+    "@babel/preset-env": "^7.9.6",
+    "@types/jest": "^25.2.2",
     "@types/jquery": "^3.3.33",
-    "cypress": "^4.1.0",
+    "babel-jest": "^26.0.1",
+    "cypress": "^4.5.0",
     "eslint": "^6.8.0",
     "eslint-config-airbnb-base": "^14.1.0",
-    "eslint-plugin-import": "^2.20.2"
+    "eslint-plugin-import": "^2.20.2",
+    "jest": "^26.0.1",
+    "npm-run-all": "^4.1.5"
   }
 }
