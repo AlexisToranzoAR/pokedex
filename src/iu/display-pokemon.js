@@ -19,6 +19,10 @@ export function loadPokemonIU(idPokemon, responseJSON) {
   const numberAbilities = responseJSON.abilities.length;
   $('#pokemons-container').data('selected-pokemon-id', idPokemon);
   $('#pokemons-container').data('selected-pokemon-name', namePokemon);
+  const closeButton = $('#close-button')[0];
+  if (!(typeof closeButton === 'undefined')) {
+    closeButton.click();
+  }
   changePage(idPokemon);
   changeIcon(idPokemon);
   displayName(responseJSON.name);
@@ -41,8 +45,8 @@ function changeIcon(idPokemon) {
       .then((img) => {
         $('#icon').attr('href', img);
       })
-      .catch((error) => {
-        console.error(`FALLO CARGAR ICON POKEMON "${idPokemon}" CON BASTION API`, error);
+      .catch((e) => {
+        console.error(`FALLO CARGAR ICON POKEMON "${idPokemon}" CON BASTION API`, e);
         loadImgPokeAPI(idPokemon)
           .then((img) => {
             $('#icon').attr('href', img);
@@ -67,13 +71,13 @@ function displayImages(idPokemon) {
       .then((img) => {
         $('#img-poke').attr('src', img);
       })
-      .catch((error) => {
-        console.error(`FALLO CARGAR IMAGEN POKEMON "${idPokemon}" CON BASTION API`, error);
+      .catch((e) => {
+        // console.error(`FALLO CARGAR IMAGEN POKEMON "${idPokemon}" CON BASTION API`, e);
         loadImgPokeAPI(idPokemon)
           .then((img) => {
             $('#img-poke').attr('src', img);
-          })
-          .catch((error) => console.error(`FALLO CARGAR IMAGEN POKEMON "${idPokemon}" CON POKE API`, error));
+          });
+        // .catch((error) => console.error(`FALLO CARGAR IMAGEN POKEMON "${idPokemon}" CON POKE API`, error));
       });
   } else {
     $('#img-poke').attr('src', imgSrc);

@@ -50,8 +50,7 @@ function createFigure(element, idPokemon) {
       $(`#element-${element} .name-poke`).data('id', idPokemon);
       $(`#element-${element}`).removeClass('d-none');
     })
-    .catch((error) => {
-      console.error(`FALLO CARGAR NOMBRE POKEMON "${idPokemon}" EN MAIN`, error);
+    .catch(() => {
       $(`#element-${element}`).addClass('d-none');
     });
 }
@@ -61,18 +60,15 @@ function loadImage(element, idPokemon) {
     .then((img) => {
       $(`#element-${element} .img-poke`).attr('src', img);
     })
-    .catch((error) => {
-      console.error(`FALLO CARGAR IMAGEN POKEMON "${idPokemon}" CON BASTION API EN MAIN`, error);
+    .catch(() => {
       loadImgPokeAPI(idPokemon)
         .then((img) => {
           $(`#element-${element} .img-poke`).attr('src', img);
-        })
-        .catch((error) => console.error(`FALLO CARGAR IMAGEN POKEMON "${idPokemon}" CON POKE API EN MAIN`, error));
+        });
     });
 }
 
 function namePokemon(idPokemon) {
   return loadPokemonDataAPI(idPokemon)
-    .then((responseJSON) => responseJSON.name)
-    .catch((error) => console.error(`FALLO AL OBTENER NOMBRE DEL POKEMON "${idPokemon}" EN MAIN`, error));
+    .then((responseJSON) => responseJSON.name);
 }
