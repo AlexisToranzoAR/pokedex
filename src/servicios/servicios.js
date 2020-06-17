@@ -1,25 +1,35 @@
 import {
+  selectAbilitiesLanguages,
+} from './select-language/select-abilities-language.js'
+import {
   loadPokemonDataAPI,
 } from '../API/pokeAPI.js';
 import {
   loadPokemonLocalStorage,
   savePokemon,
-} from '../storage/pokemon.js';
+} from './storage/pokemon.js';
+import {
+  mapearPokemon,
+} from './mapper.js';
 
-export async function loadPokemonService(id) {
-  if (id === undefined) {
-    throw new Error('Se necesita una id para cargar un pokemón');
+
+export async function loadPokemonService(idOrName,language) {
+  if (idOrName === undefined || language === undefined) {
+    throw new Error('Se necesita una id y un idioma para cargar un pokemón');
   }
 
   try {
-    return loadPokemonLocalStorage(id);
+    const pokemonData = loadPokemonLocalStorage(idOrName, language);
+    return pokemonData;
   } catch (e) {
     try {
-      const pokemon = await loadPokemonDataAPI(id);
-      savePokemon(id, pokemon);
-      return pokemon;
+      const pokemonData = await loadPokemonDataAPI(idOrName);
+      const pokemonClass = mapearPokemon(pokemonData);
+      await selectAbilitiesLanguages(language, pokemonClass);
+      savePokemon(idOrName, pokemonClass, language);
+      return pokemonClass;
     } catch (error) {
-      throw new Error(`Fallo consiguiendo info del pokemon ${id}`);
+      throw new Error(`Fallo consiguiendo info del pokemon ${idOrName}`);
     }
   }
 }

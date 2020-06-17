@@ -4,7 +4,7 @@
   "description": "pokedex",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest --collect-coverage",
     "test:dev": "jest --watch",
     "test:iu": "run-p serve cypress-run",
     "test:iu:dev": "run-p serve cypress-dev",

@@ -8,7 +8,6 @@ import {
 } from './disable-buttons.js';
 import { loadPokemon } from '../load-pokemon/load-pokemon.js';
 
-
 export function pageDown() {
   let currentPage = $('#pokemons-container').data('page-number');
   currentPage--;
@@ -26,24 +25,20 @@ export function pageUp() {
 }
 
 export function previousPokemon() {
-  $('#abilities-info').empty();
-  $('#img-poke').attr('src', './src/gifs/pokemon-loading.gif');
   let selectedPokemon = $('#pokemons-container').data('selected-pokemon-id');
   selectedPokemon--;
   $('#pokemons-container').data('selected-pokemon-id', selectedPokemon);
-  $('h1').html('');
+  $('h1').html('Cargando...');
   loadPokemon(selectedPokemon);
   disableNavPokemonButton(selectedPokemon);
   changePage(selectedPokemon);
 }
 
 export function nextPokemon() {
-  $('#abilities-info').empty();
-  $('#img-poke').attr('src', './src/gifs/pokemon-loading.gif');
   let selectedPokemon = $('#pokemons-container').data('selected-pokemon-id');
   selectedPokemon++;
   $('#pokemons-container').data('selected-pokemon-id', selectedPokemon);
-  $('h1').html('');
+  $('h1').html('Cargando...');
   loadPokemon(selectedPokemon);
   disableNavPokemonButton(selectedPokemon);
   changePage(selectedPokemon);
@@ -52,7 +47,7 @@ export function nextPokemon() {
 export function homePage() {
   $('#pokemons-container').attr('data-selected-pokemon-id', 0);
   $('#pokemons-container').attr('data-selected-pokemon-name', '');
-  $('h1').html('Pokemones');
+  $('h1').html('Pokemons');
   $('#abilities-info').empty();
   $('#img-poke').attr('src', '');
   $('#pokemons-container').removeClass('d-none');

@@ -1,41 +1,41 @@
-export function loadPokemonDataAPI(idPokemon) {
-  const pokeURL = `https://pokeapi.co/api/v2/pokemon/${idPokemon}`;
+export function loadPokemonDataAPI(idOrName) {
+  if(idOrName === undefined){
+    throw new Error('Se necesita un identificador para buscar la informacion de un pokemon');
+  }
+  const pokeURL = `https://pokeapi.co/api/v2/pokemon/${idOrName}`;
   return fetch(pokeURL)
     .then((response) => {
-      if (!(response.status === 200)) {
-        throw new Error();
+      if (response.ok) {
+        return response.json();
       }
-      return response.json();
+      throw new Error(`Fallo de conexion http al cargar la info del pokemon con ID: ${idPokemon}`);
     });
 }
 
 export function loadImgPokeAPI(idPokemon) {
+  if(idPokemon === undefined){
+    throw new Error('Se necesita un identificador para buscar la imagen de un pokemon');
+  }
   const pokeURL = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${idPokemon}.png`;
   return fetch(pokeURL)
     .then((response) => {
-      if (response.status === 200) {
+      if (response.ok) {
         return response.blob();
       }
-      throw new Error();
+      throw new Error(`Fallo de conexion http al cargar la imagen del pokemon con ID: ${idPokemon} desde PokeAPI`);
     })
     .then((blob) => URL.createObjectURL(blob));
 }
 
-export function nameAbilityPokemonAPI(abilityNameURL) {
-  return fetch(abilityNameURL)
-    .then((response) => response.json())
-    .then((responseJSON) => responseJSON.names[4].name)
-    .catch((error) => {
-      console.error('FALLÓ MOSTRAR NOMBRE HABILIDAD', error);
-    });
-}
-
-export function dataAbilityPokemonAPI(abilityInfoURL) {
-  return fetch(abilityInfoURL)
-    .then((response) => response.json())
-    .then((responseJSON) => responseJSON.flavor_text_entries[23].flavor_text)
-    .catch(() => fetch(URL)
-      .then((response) => response.json())
-      .then((responseJSON) => responseJSON.effect_entries[0].effect)
-      .catch((error) => console.error('FALLÓ MOSTRAR INFO HABILIDADES', error)));
+export function loadAbilityAPI(abilityURL){
+  if (abilityURL === undefined) {
+    throw new Error('Se necesita una URL para buscar info de una habilidad');
+  }
+  return fetch(abilityURL)
+    .then((response) => {
+      if (response.ok) {
+        return response.json();
+      }
+      throw new Error(`Fallo de conexion http con la habilidad de URL ${abilityURL}`)
+    })
 }
