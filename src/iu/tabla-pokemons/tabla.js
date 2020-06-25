@@ -1,12 +1,15 @@
-import { firstCapitalLetter } from '../utilidades/utilidades.js';
-import { disableNavButton } from '../iu/disable-buttons.js';
-import { loadImgBastionAPI } from '../API/bastionbotAPI.js';
+import { firstCapitalLetter } from '../../utilidades/utilidades.js';
+import { disableNavButton } from '../buttons/disable-buttons.js';
+import { loadImgBastionAPI } from '../../API/bastionbotAPI.js';
 import {
   loadImgPokeAPI,
   loadPokemonDataAPI,
-} from '../API/pokeAPI.js';
+} from '../../API/pokeAPI.js';
+import './click-pokemon.js';
+import '../buttons/buttons-click.js';
 
-export function loadPage(number) {
+export function loadPage(number = 1) {
+  $('#pokemons-container').data('page-number', number);
   cleanFiguresChilds();
   const pokemones = 18 * number;
   let element = 0;

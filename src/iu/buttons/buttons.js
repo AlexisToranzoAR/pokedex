@@ -1,12 +1,12 @@
 import {
   loadPage,
   changePage,
-} from '../tabla-pokemones/tabla.js';
+} from '../tabla-pokemons/tabla.js';
 import {
   disableNavButton,
   disableNavPokemonButton,
 } from './disable-buttons.js';
-import { loadPokemon } from '../load-pokemon/load-pokemon.js';
+import { loadPokemon } from '../../servicios/pokemon/load-pokemon/load-pokemon.js';
 
 export function pageDown() {
   let currentPage = $('#pokemons-container').data('page-number');

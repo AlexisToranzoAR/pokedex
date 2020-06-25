@@ -95,23 +95,13 @@ context('pokedex', () => {
   it('se asegura que no se pueda buscar por id inexistente', () => {
     cy.get('#search-pokemon').clear().type(1500);
     cy.get('#search').click();
-    cy.get('#img-poke').should('exist');
-    cy.get('#id-poke').should('have.text', 'ID: 6');
-    cy.get('#height-poke').should('have.text', 'Altura: 1.7m');
-    cy.get('#weight-poke').should('have.text', 'Peso: 90.5kg');
-    cy.get('#ability-0').should('have.text', 'Poder Solar:Si hace sol, baja los PS, pero\npotencia el At. Esp.');
-    cy.get('#ability-1').should('have.text', 'Mar Llamas:Potencia los ataques de tipo\nFuego en un apuro.');
+    cy.get('.alert strong').should('have.text', 'Pokemon "1500" no encontrado,');
   });
 
   it('se asegura que no se pueda buscar por nombre inexistente', () => {
     cy.get('#search-pokemon').clear().type('asdf');
     cy.get('#search').click();
-    cy.get('#img-poke').should('exist');
-    cy.get('#id-poke').should('have.text', 'ID: 6');
-    cy.get('#height-poke').should('have.text', 'Altura: 1.7m');
-    cy.get('#weight-poke').should('have.text', 'Peso: 90.5kg');
-    cy.get('#ability-0').should('have.text', 'Poder Solar:Si hace sol, baja los PS, pero\npotencia el At. Esp.');
-    cy.get('#ability-1').should('have.text', 'Mar Llamas:Potencia los ataques de tipo\nFuego en un apuro.');
+    cy.get('.alert strong').should('have.text', 'Pokemon "asdf" no encontrado,');
   });
 });
 

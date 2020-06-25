@@ -1,6 +1,6 @@
-import { loadPokemonIU } from '../iu/display-pokemon.js';
-import { loadPokemonService } from '../servicios/servicios.js';
-import { displayPreloadEnvironment } from '../iu/display-pokemon.js';
+import { loadPokemonIU } from '../../../iu/display-pokemon.js';
+import { loadPokemon as loadPokemonService} from '../pokemon.js';
+import { displayPreloadEnvironment } from '../../../iu/display-pokemon.js';
 
 const language = "es";
 

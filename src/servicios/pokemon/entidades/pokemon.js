@@ -1,4 +1,4 @@
-class Pokemon {
+export default class Pokemon {
     constructor(data) {
         this.id = data.id;
         this.name = data.name;
@@ -10,9 +10,4 @@ class Pokemon {
         this.stats = data.stats;
         this.types = data.types;
     }
-}
-
-export function mapearPokemon(pokemonAPI) {
-    const pokemonClass = new Pokemon(pokemonAPI);
-    return pokemonClass;
 }

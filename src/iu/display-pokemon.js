@@ -1,4 +1,4 @@
-import { changePage } from '../tabla-pokemones/tabla.js';
+import { changePage } from './tabla-pokemons/tabla.js';
 import { firstCapitalLetter, searchBlobImgSrc } from '../utilidades/utilidades.js';
 import {
   loadImgPokeAPI,

@@ -1,5 +1,5 @@
-import { loadPokemon } from '../load-pokemon/load-pokemon.js';
-import { disableNavPokemonButton } from '../iu/disable-buttons.js';
+import { loadPokemon } from '../../servicios/pokemon/load-pokemon/load-pokemon.js';
+import { disableNavPokemonButton } from '../buttons/disable-buttons.js';
 
 $('#pokemons-container').click(clickPokemon);
 

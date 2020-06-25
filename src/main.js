@@ -1,8 +1,3 @@
-import { loadPage } from './tabla-pokemones/tabla.js';
-import './click-dom/click-pokemon.js';
-import './click-dom/buttons-click.js';
+import { loadPage } from './iu/tabla-pokemons/tabla.js';
 
-$('#pokemons-container').data('page-number', 1);
-const currentPage = $('#pokemons-container').data('page-number');
-
-loadPage(currentPage);
+loadPage();
