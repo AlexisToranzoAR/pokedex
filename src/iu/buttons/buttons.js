@@ -54,4 +54,6 @@ export function homePage() {
   $('#pokemon-container').addClass('d-none');
   $('#page-number-buttons').removeClass('d-none');
   $('#pokemon-number-buttons').addClass('d-none');
+  $('#pokemons-container').data('selected-pokemon-name', "");
+  $('#pokemons-container').data('selected-pokemon-id', 0);
 }
