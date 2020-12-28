@@ -1,6 +1,6 @@
 import {
     loadAbilityAPI,
-} from '../../API/pokeAPI.js';
+} from '../../../API/pokeAPI.js';
 
 export async function selectAbilitiesLanguages(language, pokemonClass) {
     if (language === undefined || typeof pokemonClass !== 'object'){

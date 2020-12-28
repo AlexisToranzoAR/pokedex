@@ -1,6 +1,6 @@
 import { loadPokemon } from '../load-pokemon/load-pokemon.js';
-import { disableNavPokemonButton } from '../iu/disable-buttons.js';
-import { displayTopAlert } from '../iu/display-alerts.js';
+import { disableNavPokemonButton } from '../../../iu/buttons/disable-buttons.js';
+import { displayTopAlert } from '../../../iu/display-alerts.js';
 
 export function clickSearch() {
   const idActualPokemon = $('#pokemons-container').data('selected-pokemon-id');

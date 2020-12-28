@@ -3,7 +3,7 @@ import {
 } from './select-language/select-abilities-language.js'
 import {
   loadPokemonDataAPI,
-} from '../API/pokeAPI.js';
+} from '../../API/pokeAPI.js';
 import {
   loadPokemonLocalStorage,
   savePokemon,
@@ -12,8 +12,7 @@ import {
   mapearPokemon,
 } from './mapper.js';
 
-
-export async function loadPokemonService(idOrName,language) {
+export async function loadPokemon(idOrName,language) {
   if (idOrName === undefined || language === undefined) {
     throw new Error('Se necesita una id y un idioma para cargar un pokemón');
   }

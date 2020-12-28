@@ -4,8 +4,8 @@ import {
   previousPokemon,
   nextPokemon,
   homePage,
-} from '../iu/buttons.js';
-import { clickSearch } from '../search-pokemon/search.js';
+} from './buttons.js';
+import { clickSearch } from '../../servicios/pokemon/search-pokemon/search.js';
 
 $('#search').on('click', () => {
   clickSearch();

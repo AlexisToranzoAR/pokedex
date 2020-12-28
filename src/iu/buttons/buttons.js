@@ -1,12 +1,12 @@
 import {
   loadPage,
   changePage,
-} from '../tabla-pokemones/tabla.js';
+} from '../tabla-pokemons/tabla.js';
 import {
   disableNavButton,
   disableNavPokemonButton,
 } from './disable-buttons.js';
-import { loadPokemon } from '../load-pokemon/load-pokemon.js';
+import { loadPokemon } from '../../servicios/pokemon/load-pokemon/load-pokemon.js';
 
 export function pageDown() {
   let currentPage = $('#pokemons-container').data('page-number');
@@ -54,4 +54,6 @@ export function homePage() {
   $('#pokemon-container').addClass('d-none');
   $('#page-number-buttons').removeClass('d-none');
   $('#pokemon-number-buttons').addClass('d-none');
+  $('#pokemons-container').data('selected-pokemon-name', "");
+  $('#pokemons-container').data('selected-pokemon-id', 0);
 }
